@@ -8,7 +8,7 @@ public class TransformSync : MonoBehaviour
 
     void Update()
     {
-        OtherPlayer.transform.position = new Vector3(Player.transform.position.x, OtherPlayer.transform.position.y, Player.transform.position.z);
-        OtherPlayer.transform.rotation = Player.transform.rotation;
+        this.transform.position = new Vector3(Player.transform.position.x, this.transform.position.y, Player.transform.position.z);
+        this.transform.rotation = Player.transform.rotation;
     }
 }

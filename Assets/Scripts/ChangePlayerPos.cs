@@ -4,15 +4,15 @@ using UnityEngine;
 public class ChangePlayerPos : MonoBehaviour
 {
     public GameObject OtherPlayer;
-
-    public void OnTriggerStay(Collider other)
+    
+    public void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.gameObject.tag);
-        if (other.tag == "Player")
+        if(other.gameObject.tag == "Player")
         {
-            OtherPlayer.GetComponent<TransformSync>().enabled = false;
-            Vector3 tmppos = other.transform.position;
-            other.transform.position = OtherPlayer.transform.position;
+            //OtherPlayer.GetComponent<TransformSync>().enabled = false;
+            Vector3 tmppos = OtherPlayer.transform.position;
+            other.gameObject.transform.position = OtherPlayer.transform.position;
             OtherPlayer.transform.position = tmppos;
             OtherPlayer.GetComponent<TransformSync>().enabled = true;
         }

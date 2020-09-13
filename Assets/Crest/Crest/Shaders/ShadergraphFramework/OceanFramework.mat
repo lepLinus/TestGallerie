@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: OceanFramework
+  m_Shader: {fileID: -6465566751694194690, guid: b66e8fdb1dfb99541a0e2f505b49be66,
+    type: 3}
+  m_ShaderKeywords: CREST_CAUSTICS_ON CREST_FOAM_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _CausticsDistortionTexture:
+        m_Texture: {fileID: 2800000, guid: 800e061692ff7a84e887f439d3364410, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CausticsTexture:
+        m_Texture: {fileID: 2800000, guid: 24552fd937a31a842aa7ee1c2e14d89d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureFoam:
+        m_Texture: {fileID: 2800000, guid: e330b3b94b6bdfb42ab2a9e1ca3a5efc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureNormals:
+        m_Texture: {fileID: 2800000, guid: 800e061692ff7a84e887f439d3364410, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - CREST_CAUSTICS: 1
+    - CREST_FOAM: 1
+    - Vector1_89268251: 10
+    - _CausticsDepthOfField: 0.33
+    - _CausticsDistortionScale: 25
+    - _CausticsDistortionStrength: 0.16
+    - _CausticsFocalDepth: 2
+    - _CausticsStrength: 3.2
+    - _CausticsTextureAverage: 0.07
+    - _CausticsTextureScale: 5
+    - _FoamFeather: 0.32
+    - _FoamIntensityAlbedo: 1
+    - _FoamIntensityEmissive: 0.5
+    - _FoamNormalStrength: 1
+    - _FoamSmoothness: 0.7
+    - _NormalsScale: 40
+    - _NormalsStrength: 0.2
+    - _RefractionStrength: 0.2
+    - _SSSIntensityBase: 0.28
+    - _SSSIntensitySun: 1.84
+    - _SSSSunFalloff: 11.4
+    - _ScatterColourShallowDepthFalloff: 2.57
+    - _ScatterColourShallowDepthMax: 7
+    - _Smoothness: 0.8
+    - _SmoothnessFalloff: 0.5
+    - _SmoothnessFar: 0.35
+    - _SmoothnessFarDistance: 2000
+    m_Colors:
+    - _DepthFogDensity: {r: 0.33, g: 0.23, b: 0.37, a: 0}
+    - _SSSTint: {r: 0.090196066, g: 0.49803922, b: 0.31450102, a: 0}
+    - _ScatterColourBase: {r: 0, g: 0.2595968, b: 0.5377358, a: 0}
+    - _ScatterColourShallow: {r: 0, g: 0.19088283, b: 0.3962264, a: 1}
+    - _Specular: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 0}
