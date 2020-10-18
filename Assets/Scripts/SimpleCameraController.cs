@@ -15,6 +15,7 @@ namespace UnityTemplateProjects
 
             public void SetFromTransform(Transform t)
             {
+                
                 pitch = t.eulerAngles.x;
                 yaw = t.eulerAngles.y;
                 roll = t.eulerAngles.z;
@@ -26,7 +27,6 @@ namespace UnityTemplateProjects
             public void Translate(Vector3 translation)
             {
                 Vector3 rotatedTranslation = Quaternion.Euler(pitch, yaw, roll) * translation;
-
                 x += rotatedTranslation.x;
                 y += rotatedTranslation.y;
                 z += rotatedTranslation.z;
@@ -108,16 +108,9 @@ namespace UnityTemplateProjects
             return direction;
         }
         
-        void Update()
+        void LateUpdate()
         {
             // Exit Sample  
-            if (Input.GetKey(KeyCode.Escape))
-            {
-                Application.Quit();
-				#if UNITY_EDITOR
-				UnityEditor.EditorApplication.isPlaying = false; 
-				#endif
-            }
 
             // Hide and lock cursor when right mouse button pressed
             if (Input.GetMouseButtonDown(0))
@@ -143,6 +136,7 @@ namespace UnityTemplateProjects
                 m_TargetCameraState.pitch += mouseMovement.y * mouseSensitivityFactor;
             }
             
+
             // Translation
             var translation = GetInputTranslationDirection() * Time.deltaTime;
 
@@ -163,8 +157,12 @@ namespace UnityTemplateProjects
             var positionLerpPct = 1f - Mathf.Exp((Mathf.Log(1f - 0.99f) / positionLerpTime) * Time.deltaTime);
             var rotationLerpPct = 1f - Mathf.Exp((Mathf.Log(1f - 0.99f) / rotationLerpTime) * Time.deltaTime);
             m_InterpolatingCameraState.LerpTowards(m_TargetCameraState, positionLerpPct, rotationLerpPct);
-
             m_InterpolatingCameraState.UpdateTransform(transform);
+            
+        }
+        public void Update()
+        {
+            this.transform.rotation = new Quaternion(Mathf.Clamp(this.transform.rotation.x, -90, 90), this.transform.rotation.y, this.transform.rotation.z, this.transform.rotation.w);
         }
     }
 

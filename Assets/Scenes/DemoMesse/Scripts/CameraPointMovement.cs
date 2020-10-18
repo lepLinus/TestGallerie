@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityTemplateProjects;
 
 public class CameraPointMovement : MonoBehaviour
 {
     public GameObject camera2;
-    public Material lit, normal;
-    public GameObject AllMovePos;
+    public Material litPOS, normalPOS;
+    public Material litframe, normalframe;
+    public GameObject AllMovePos,AllPictures;
+    public GameObject PictureInfo;
 
     void Update()
     {
         RaycastHit hit;
-        Debug.Log("Ray");
         Debug.DrawRay(camera2.transform.position, camera2.transform.forward, Color.red);
         Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(mouseRay.origin, mouseRay.direction, out hit,1000))
@@ -20,11 +22,26 @@ public class CameraPointMovement : MonoBehaviour
             if (hit.transform.gameObject.tag == "MovePos")
             {
                 Changematerial(hit.transform.gameObject);
-                hit.transform.gameObject.GetComponent<MeshRenderer>().material = lit;
+                hit.transform.gameObject.GetComponent<MeshRenderer>().material = litPOS;
                 
                 if (Input.GetMouseButtonDown(0))
                 {
                     this.GetComponent<NavMeshAgent>().SetDestination(hit.transform.position);
+                }
+            }
+
+            if (hit.transform.gameObject.tag == "Picture")
+            {
+                Changematerial(hit.transform.gameObject);
+                hit.transform.gameObject.GetComponent<MeshRenderer>().material = litframe;
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    camera2.GetComponent<FirstPersonCamera>().enabled = false;
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+                    PictureInfo.GetComponent<PictureInfo>().SetNewText(hit.transform.gameObject.name);
+                    PictureInfo.SetActive(true);
                 }
             }
         }
@@ -38,8 +55,21 @@ public class CameraPointMovement : MonoBehaviour
             {
                 break;
             }
-            AllMovePos.transform.GetChild(i).GetComponent<MeshRenderer>().material = normal;
+            AllMovePos.transform.GetChild(i).GetComponent<MeshRenderer>().material = normalPOS;
         }
-        //hit.transform.gameObject.GetComponent<MeshRenderer>().material = normal;
+
+        for (int i = 0; i < AllPictures.transform.childCount; i++)
+        {
+            if (AllPictures.transform.GetChild(i) == hit)
+            {
+                break;
+            }
+            AllPictures.transform.GetChild(i).GetComponent<MeshRenderer>().material = normalframe;
+        }
+    }
+
+    public void EnableCameraMov()
+    {
+        camera2.GetComponent<FirstPersonCamera>().enabled = true;
     }
 }
