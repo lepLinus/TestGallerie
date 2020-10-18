@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MovePos
   - Picture
+  - AD
   layers:
   - Default
   - TransparentFX
