@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DisplayText : MonoBehaviour
 {
     public TextMeshProUGUI Maintext;
     public string[] Alldialogs;
     int index;
-    bool isrunning;
+    bool isrunning = true;
+    public GameObject PressKeytext;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,21 +25,30 @@ public class DisplayText : MonoBehaviour
         {
             isrunning = true;
             Maintext.text = "";
+            PressKeytext.SetActive(false);
             index++;
-            StartCoroutine(Displaytext(Alldialogs[index]));
+            if (index >= Alldialogs.Length)
+            {
+                SceneManager.LoadScene(1);
+            }
+            else
+            {
+                StartCoroutine(Displaytext(Alldialogs[index]));
+            } 
         }
     }
 
     public IEnumerator Displaytext(string text)
     {
+        
         char[] c = text.ToCharArray();
         for (int i = 0; i< c.Length; i++)
         {
             Maintext.text += c[i];
             yield return new WaitForSeconds(0.1f);
         }
-        yield return new WaitForSeconds(2);
-        Maintext.text = "";
+        yield return new WaitForSeconds(1);
+        PressKeytext.SetActive(true);
         isrunning = false;
     }
 }
