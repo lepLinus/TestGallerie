@@ -29,6 +29,7 @@ public class DisplayText : MonoBehaviour
             index++;
             if (index >= Alldialogs.Length)
             {
+                Maintext.text = "Loading...";
                 SceneManager.LoadScene(1);
             }
             else
