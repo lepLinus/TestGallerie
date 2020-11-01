@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityTemplateProjects;
+using System;
 
 public class CameraPointMovement : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class CameraPointMovement : MonoBehaviour
     public Material normaltv;
     public GameObject AllMovePos,AllPictures,AllADs;
     public GameObject PictureInfo, AdInfo;
-
+    public ScoreSystem ScoreSystem;
     void Update()
     {
         RaycastHit hit;
@@ -39,6 +40,7 @@ public class CameraPointMovement : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     camera2.GetComponent<FirstPersonCamera>().enabled = false;
+                    ScoreSystem.AddScorePicture(Int32.Parse(hit.transform.gameObject.name));
                     Cursor.visible = true;
                     Cursor.lockState = CursorLockMode.None;
                     PictureInfo.GetComponent<PictureInfo>().SetNewText(hit.transform.gameObject.name);
