@@ -8,13 +8,20 @@ public class DisplayText : MonoBehaviour
 {
     public TextMeshProUGUI Maintext;
     public string[] Alldialogs;
+
     int index;
     bool isrunning = true;
     public GameObject PressKeytext;
+
+
     // Start is called before the first frame update
     void Start()
     {
         index = 0;
+    }
+
+    public void StartDisplaytext()
+    {
         StartCoroutine(Displaytext(Alldialogs[index]));
     }
 

@@ -47,6 +47,7 @@ public class CameraPointMovement : MonoBehaviour
                     PictureInfo.SetActive(true);
                 }
             }
+            
             if (hit.transform.gameObject.tag == "AD")
             {
                 Changematerial(hit.transform.gameObject);
@@ -59,6 +60,14 @@ public class CameraPointMovement : MonoBehaviour
                     Cursor.lockState = CursorLockMode.None;
                     //PictureInfo.GetComponent<PictureInfo>().SetNewText(hit.transform.gameObject.name);
                     AdInfo.SetActive(true);
+                }
+            }
+            if (hit.transform.gameObject.tag == "Secret")
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    ScoreSystem.AddSecretScore(Int32.Parse(hit.transform.gameObject.name));
+                    GameObject.Destroy(hit.transform.gameObject);
                 }
             }
         }

@@ -7,10 +7,12 @@ using System;
 public class ScoreSystem : MonoBehaviour
 {
     public int Exp;
-    public int PictureScore;
+    public int PictureScore, SecretScore;
     Animation Scoreanim;
     public TextMeshProUGUI Scoretext, ExpText;
-    List<int> PicturesDis = new List<int>(); 
+    List<int> PicturesDis = new List<int>();
+    List<int> SecretsDis = new List<int>();
+
     void Start()
     {
         Scoreanim = this.GetComponent<Animation>();
@@ -32,7 +34,22 @@ public class ScoreSystem : MonoBehaviour
         }
         PicturesDis.Add(index);
         Scoreanim.Play("Fadein");
-        Scoretext.text = (PicturesDis.Count.ToString()+1) + "/19 Pictures Discovered \n Exp +" + PictureScore;
+        Scoretext.text = (PicturesDis.Count) + "/19 Pictures Discovered \n Exp +" + PictureScore;
         Exp += PictureScore;
+    }
+
+    public void AddSecretScore(int index)
+    {
+        for (int i = 0; i < SecretsDis.Count; i++)
+        {
+            if (SecretsDis[i] == index)
+            {
+                return;
+            }
+        }
+        SecretsDis.Add(index);
+        Scoreanim.Play("Fadein");
+        Scoretext.text = (SecretsDis.Count) + "/6 Secrets Discovered \n Exp +" + PictureScore;
+        Exp += SecretScore;
     }
 }
