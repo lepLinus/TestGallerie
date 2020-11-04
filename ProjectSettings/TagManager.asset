@@ -8,6 +8,7 @@ TagManager:
   - Picture
   - AD
   - Secret
+  - NetworkManager
   layers:
   - Default
   - TransparentFX

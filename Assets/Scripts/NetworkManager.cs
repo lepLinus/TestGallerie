@@ -8,14 +8,13 @@ using UnityEngine.SceneManagement;
 public class NetworkManager : MonoBehaviour
 {
     public GameObject PlayerPref;
+    public GameObject DisplayText;
     public string getposurl;
     public string getuserurl;
     public Getrequest getrequest;
     int userid;
     int exp;
     string Progress;
-    public TextMeshProUGUI ErrorText;
-    public TMP_InputField NameInput, PassWdInput;
     bool Playercreated = false;
 
     public void Update()
@@ -44,37 +43,11 @@ public class NetworkManager : MonoBehaviour
         yield return new WaitForSeconds(1);
     }
 
-    public void Login()
+    public void Login(string name)
     {
-        string Name = NameInput.text;
-        string Passwd = PassWdInput.text;
-
+        string Name = name;
+        DisplayText.GetComponent<DisplayText>().StartDisplaytext(name);
     }
-
-
-    public IEnumerator Login(string loginstring)
-    {
-        getrequest.Get(getposurl + loginstring);
-        while (getrequest.Message == null)
-        {
-            yield return new WaitForSeconds(0.1f);
-        }
-        if (getrequest.Message == "Error")
-        {
-            ErrorText.text = "Error on Login";
-        }
-        else
-        {
-            string josn = "{\"Items\":" + getrequest.Message + "}";
-            Debug.Log(josn);
-            UserInfo[] userInfo = JsonHelper.FromJson<UserInfo>(josn);
-            exp = Int32.Parse(userInfo[0].Exp);
-            Progress = userInfo[0].GameInfo;
-        }
-        yield return new WaitForSeconds(1);
-    }
-
-
 
     [System.Serializable]
     public class MessageInfo

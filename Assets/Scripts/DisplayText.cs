@@ -20,8 +20,13 @@ public class DisplayText : MonoBehaviour
         index = 0;
     }
 
-    public void StartDisplaytext()
+    public void StartDisplaytext(string name)
     {
+        if (name == "")
+        {
+            name = "User";
+        }
+        Alldialogs[0] = "Hey " + name;
         StartCoroutine(Displaytext(Alldialogs[index]));
     }
 
