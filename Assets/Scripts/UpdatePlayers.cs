@@ -14,13 +14,17 @@ public class UpdatePlayers : MonoBehaviour
     public void Start()
     {
         getrequest = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<Getrequest>();
-        StartCoroutine(Load());
     }
 
+    public void LoadAll()
+    {
+        StartCoroutine(Load());
+    }
+    /*
     public IEnumerator UpdatePos()
     {
         getrequest.Get("https://www.linuslepschies.de/PhpGallerie/GetAllPos.php?PassWD=1MRf!s13");
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         if (getrequest.Message.Length == 0)
         {
             Debug.Log("Error on Getting data");
@@ -33,7 +37,7 @@ public class UpdatePlayers : MonoBehaviour
 
             for (int i = 0; i < userInfos.Length; i++)
             {
-                if (userInfos[i].GameInfo.Split('|')[1] == "offline")
+                if (userInfos[i].GameInfo.Split('|')[userInfos[i].GameInfo.Split('|').Length - 1] == "offline")
                 {
                     continue;
                 }
@@ -41,15 +45,13 @@ public class UpdatePlayers : MonoBehaviour
                 PlayersParent.transform.GetChild(i).gameObject.GetComponent<NavMeshAgent>().destination = new Vector3(float.Parse(Allpos[i].Split(',')[0]), float.Parse(Allpos[i].Split(',')[1]), float.Parse(Allpos[i].Split(',')[2]));
             }
         }
-        yield return new WaitForSeconds(5);
-        StartCoroutine(UpdatePos());
-    }
+    }*/
 
 
     public IEnumerator Load()
     {
-        getrequest.Get("https://www.linuslepschies.de/PhpGallerie/GetScore.php?UserName=" + "&PassWD=" + "1MRf!s13");
-        yield return new WaitForSeconds(2);
+        getrequest.Get("https://www.linuslepschies.de/PhpGallerie/GetAllPos.php?PassWD=1MRf!s13");
+        yield return new WaitForSeconds(1);
         if (getrequest.Message.Length == 0)
         {
             Debug.Log("Error on Getting data");
@@ -62,18 +64,30 @@ public class UpdatePlayers : MonoBehaviour
 
             for (int i = 0;i < userInfos.Length; i++)
             {
-                if (userInfos[i].UserName == player.Name || userInfos[i].GameInfo.Split('|')[1] == "offline")
+                bool isspwned = false;
+
+                for (int j = 0; j< PlayersParent.transform.childCount; j++)
+                {
+                    if (PlayersParent.transform.GetChild(j).name == userInfos[i].UserName)
+                    {
+                        Allpos[i] = userInfos[i].GameInfo.Split('|')[0];
+                        PlayersParent.transform.GetChild(i).gameObject.GetComponent<NavMeshAgent>().destination = new Vector3(float.Parse(Allpos[i].Split(';')[0]), float.Parse(Allpos[i].Split(';')[1]), float.Parse(Allpos[i].Split(';')[2]));
+                        isspwned = true;
+                        break;
+                    }
+                }
+
+                if (userInfos[i].UserName == player.Name || userInfos[i].GameInfo.Split('|')[userInfos[i].GameInfo.Split('|').Length-1] == "offline" || isspwned == true)
                 {
                     continue;
                 }
 
                 Allpos[i] = userInfos[i].GameInfo.Split('|')[0];
-                GameObject go = Instantiate(PlayerNotLocalPref,new Vector3(float.Parse(Allpos[i].Split(',')[0]), float.Parse(Allpos[i].Split(',')[1]), float.Parse(Allpos[i].Split(',')[2])),Quaternion.identity);
+                GameObject go = Instantiate(PlayerNotLocalPref,new Vector3(float.Parse(Allpos[i].Split(';')[0]), float.Parse(Allpos[i].Split(';')[1]), float.Parse(Allpos[i].Split(';')[2])),Quaternion.identity);
+                go.transform.parent = PlayersParent.transform;
                 go.name = userInfos[i].UserName;
             }
         }
-        yield return new WaitForSeconds(1);
-        StartCoroutine(UpdatePos());
     }
 
     [System.Serializable]

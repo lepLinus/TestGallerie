@@ -50,7 +50,11 @@ public class DisplayText : MonoBehaviour
             } 
         }
     }
-
+    public void SkipAllDialogs()
+    {
+        Maintext.text = "Loading...";
+        SceneManager.LoadScene(1);
+    }
     public IEnumerator Displaytext(string text)
     {
         

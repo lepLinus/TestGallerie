@@ -14,27 +14,21 @@ public class UpdatePlayerData : MonoBehaviour
     {
         getrequest = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<Getrequest>();
         Name = NetworkManager.Name;
-        StartCoroutine(GetPos());
     }
 
-    public void UpdatePlayer(int Exp,string GameInfo)
+    public void UpdatePlayer()
     {
-        StartCoroutine(UpdateOuter(Exp,GameInfo));
+        StartCoroutine(UpdateP(player.exp, player.GameInfo));
     }
-
-    public IEnumerator UpdateOuter(int Exp, string GameInfo)
+    public void Getscore()
     {
-        yield return new WaitForSeconds(2.1f);
-        StartCoroutine(UpdateP(Exp, GameInfo));
-        yield return new WaitForSeconds(5);
-        UpdatePlayer(player.exp,player.GameInfo);
+        StartCoroutine(GetScore());
     }
-
-    public IEnumerator GetPos()
+    public IEnumerator GetScore()
     {
         getrequest.Get("https://www.linuslepschies.de/PhpGallerie/GetScore.php?UserName=" + Name + "&PassWD=" + "1MRf!s13");
-        yield return new WaitForSeconds(2);
-        if (getrequest.Message.Length == 0)
+        yield return new WaitForSeconds(1);
+        if (getrequest.Message.Length == 0 || getrequest.Message == "[]")
         {
             Debug.Log("Error on Getting data");
         }
@@ -47,10 +41,11 @@ public class UpdatePlayerData : MonoBehaviour
             player.GameInfo = userInfos[0].GameInfo;
         }
     }
+
     public IEnumerator UpdateP(int Exp,string GameInfo)
     {
         getrequest.Get("https://www.linuslepschies.de/PhpGallerie/SetScore.php?UserName=" + Name + "&PassWD=" + "1MRf!s13" + "&Exp=" + Exp + "&GameInfo=" + GameInfo);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         if (getrequest.Message.Length == 0)
         {
         }
@@ -58,11 +53,6 @@ public class UpdatePlayerData : MonoBehaviour
         {
             Debug.Log("Data was updated to database");
         }
-    }
-
-    public void OnApplicationQuit()
-    {
-        StartCoroutine(UpdateP(player.exp,player.GameInfo.Split('|')[0] + "|offline"));
     }
 
 

@@ -9,18 +9,32 @@ public class Player : MonoBehaviour
     public ScoreSystem Scoresytem;
     public string GameInfo;
     public UpdatePlayerData updatePlayerData;
+    public UpdatePlayers updatePlayers;
 
     public void Start()
     {
         Name = NetworkManager.Name;
-        updatePlayerData.UpdatePlayer(exp, GameInfo);
-        
+        StartCoroutine(Updatetoserver(true));
     }
 
-    void LateUpdate()
+    void Update()
     {
         exp = Scoresytem.Exp;
-        GameInfo = transform.position.x + "," + transform.position.y + "," + transform.position.z + "|" + "online";
+        GameInfo = transform.position.x.ToString("0.00") + ";" + transform.position.y.ToString("0.00") + ";" + transform.position.z.ToString("0.00") + "|" + "online";
+    }
+
+    public IEnumerator Updatetoserver(bool isfirstrun)
+    {
+        if (isfirstrun)
+        {
+            updatePlayerData.Getscore();
+            yield return new WaitForSeconds(1.5f);
+        }
+        updatePlayerData.UpdatePlayer();
+        yield return new WaitForSeconds(1.5f);
+        updatePlayers.LoadAll();
+        yield return new WaitForSeconds(1.5f);
+        StartCoroutine(Updatetoserver(false));
     }
 
 }
