@@ -5,10 +5,22 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public int exp;
-    public string name;
+    public string Name;
     public ScoreSystem Scoresytem;
-    void Update()
+    public string GameInfo;
+    public UpdatePlayerData updatePlayerData;
+
+    public void Start()
     {
-        Scoresytem.Exp = exp;
+        Name = NetworkManager.Name;
+        updatePlayerData.UpdatePlayer(exp, GameInfo);
+        
     }
+
+    void LateUpdate()
+    {
+        exp = Scoresytem.Exp;
+        GameInfo = transform.position.x + "," + transform.position.y + "," + transform.position.z + "|" + "online";
+    }
+
 }

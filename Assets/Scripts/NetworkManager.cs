@@ -16,14 +16,20 @@ public class NetworkManager : MonoBehaviour
     int exp;
     string Progress;
     bool Playercreated = false;
+    public static string Name;
+
+    public void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     public void Update()
     {
         if (SceneManager.GetActiveScene().buildIndex == 1 && !Playercreated)
         {
             Playercreated = true;
-            GameObject go = Instantiate(PlayerPref,new Vector3(3.07f, 0.745f, 19.892f),Quaternion.identity);
-            go.GetComponent<Player>().exp = exp;
+            PlayerPref = GameObject.FindGameObjectWithTag("Player");
+            PlayerPref.GetComponent<Player>().Name = Name;
         }
     }
 
@@ -45,7 +51,7 @@ public class NetworkManager : MonoBehaviour
 
     public void Login(string name)
     {
-        string Name = name;
+        Name = name;
         DisplayText.GetComponent<DisplayText>().StartDisplaytext(name);
     }
 
