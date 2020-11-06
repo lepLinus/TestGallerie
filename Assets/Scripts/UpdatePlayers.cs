@@ -71,8 +71,9 @@ public class UpdatePlayers : MonoBehaviour
                     if (PlayersParent.transform.GetChild(j).name == userInfos[i].UserName)
                     {
                         Allpos[i] = userInfos[i].GameInfo.Split('|')[0];
-                        PlayersParent.transform.GetChild(i).gameObject.GetComponent<NavMeshAgent>().destination = new Vector3(float.Parse(Allpos[i].Split(';')[0]), float.Parse(Allpos[i].Split(';')[1]), float.Parse(Allpos[i].Split(';')[2]));
+                        Vector3 Pos = new Vector3(float.Parse(Allpos[i].Split(';')[0]), float.Parse(Allpos[i].Split(';')[1]), float.Parse(Allpos[i].Split(';')[2]));
                         isspwned = true;
+                        PlayersParent.transform.GetChild(i).gameObject.GetComponent<NavMeshAgent>().destination = Pos;
                         break;
                     }
                 }
