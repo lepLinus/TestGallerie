@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public int exp;
-    public string Name;
+    public string Name,OnlineState;
     public ScoreSystem Scoresytem;
     public string GameInfo;
     public UpdatePlayerData updatePlayerData;
@@ -20,7 +20,8 @@ public class Player : MonoBehaviour
     void Update()
     {
         exp = Scoresytem.Exp;
-        GameInfo = transform.position.x.ToString("0.00") + ";" + transform.position.y.ToString("0.00") + ";" + transform.position.z.ToString("0.00") + "|" + "online";
+        OnlineState = "true";
+        GameInfo = transform.position.x.ToString("0.00") + ";" + transform.position.y.ToString("0.00") + ";" + transform.position.z.ToString("0.00") + "|";
     }
 
     public IEnumerator Updatetoserver(bool isfirstrun)

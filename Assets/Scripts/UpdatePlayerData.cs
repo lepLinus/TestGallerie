@@ -18,7 +18,7 @@ public class UpdatePlayerData : MonoBehaviour
 
     public void UpdatePlayer()
     {
-        StartCoroutine(UpdateP(player.exp, player.GameInfo));
+        StartCoroutine(UpdateP(player.exp, player.GameInfo, player.OnlineState));
     }
     public void Getscore()
     {
@@ -42,9 +42,9 @@ public class UpdatePlayerData : MonoBehaviour
         }
     }
 
-    public IEnumerator UpdateP(int Exp,string GameInfo)
+    public IEnumerator UpdateP(int Exp,string GameInfo,string OnlineState)
     {
-        getrequest.Get("https://www.linuslepschies.de/PhpGallerie/SetScore.php?UserName=" + Name + "&PassWD=" + "1MRf!s13" + "&Exp=" + Exp + "&GameInfo=" + GameInfo);
+        getrequest.Get("https://www.linuslepschies.de/PhpGallerie/SetScore.php?UserName=" + Name + "&PassWD=" + "1MRf!s13" + "&Exp=" + Exp + "&GameInfo=" + GameInfo + "&OnlineState=" + OnlineState);
         yield return new WaitForSeconds(1);
         if (getrequest.Message.Length == 0)
         {

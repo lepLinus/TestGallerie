@@ -78,7 +78,7 @@ public class UpdatePlayers : MonoBehaviour
                     }
                 }
 
-                if (userInfos[i].UserName == player.Name || userInfos[i].GameInfo.Split('|')[userInfos[i].GameInfo.Split('|').Length-1] == "offline" || isspwned == true)
+                if (userInfos[i].UserName == player.Name || userInfos[i].OnlineState == "false" || isspwned == true)
                 {
                     continue;
                 }
@@ -91,11 +91,18 @@ public class UpdatePlayers : MonoBehaviour
         }
     }
 
+    public IEnumerator Timeout(GameObject Playertotimeout)
+    {
+        yield return new WaitForSeconds(3);
+        GameObject.Destroy(Playertotimeout);
+    }
+
     [System.Serializable]
     public class UserInfo
     {
         public string GameInfo;
         public string UserName;
+        public string OnlineState;
         public static UserInfo CreateFromJSON(string jsonString)
         {
             return JsonUtility.FromJson<UserInfo>(jsonString);
