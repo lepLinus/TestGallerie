@@ -7743,7 +7743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.96862745, g: 0.98039216, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -10547,7 +10547,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 282850705}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
@@ -76810,7 +76810,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Exp: 100'
+  m_text: 'Inspiration: 100'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 624dc52edbf7717409a292df6fbe22e6, type: 2}
   m_sharedMaterial: {fileID: 1624932848496509102, guid: 624dc52edbf7717409a292df6fbe22e6,
@@ -76880,7 +76880,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 2030576586}
-    characterCount: 8
+    characterCount: 16
     spriteCount: 0
     spaceCount: 1
     wordCount: 2
@@ -86885,6 +86885,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exp: 0
   Name: 
+  OnlineState: 
   Scoresytem: {fileID: 122907740}
   GameInfo: 
   updatePlayerData: {fileID: 978198538391596848}

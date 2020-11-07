@@ -21,7 +21,7 @@ public class ScoreSystem : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        ExpText.text = "Exp: " + Exp;
+        ExpText.text = "Inspiration: " + Exp;
     }
     public void AddScorePicture(int index)
     {
@@ -35,7 +35,7 @@ public class ScoreSystem : MonoBehaviour
         PicturesDis.Add(index);
         Scoreanim.Stop("Fadein");
         Scoreanim.Play("Fadein");
-        Scoretext.text = (PicturesDis.Count) + "/19 Pictures Discovered \n Exp +" + PictureScore;
+        Scoretext.text = (PicturesDis.Count) + "/19 Pictures Discovered \n Inspiration +" + PictureScore;
         Exp += PictureScore;
     }
 
@@ -51,7 +51,7 @@ public class ScoreSystem : MonoBehaviour
         SecretsDis.Add(index);
         Scoreanim.Stop("Fadein");
         Scoreanim.Play("Fadein");
-        Scoretext.text = (SecretsDis.Count) + "/6 Secrets Discovered \n Exp +" + PictureScore;
+        Scoretext.text = (SecretsDis.Count) + "/6 Secrets Discovered \n Inspiration +" + PictureScore;
         Exp += SecretScore;
     }
 }
