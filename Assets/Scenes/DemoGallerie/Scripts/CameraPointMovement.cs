@@ -70,9 +70,16 @@ public class CameraPointMovement : MonoBehaviour
                     GameObject.Destroy(hit.transform.gameObject);
                 }
             }
+            if (hit.transform.gameObject.tag == "Game")
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    hit.transform.GetComponent<Interactible>().Interact();
+                }
+            }
         }
     }
-
+    
     public void Changematerial(GameObject hit)
     {
         for (int i = 0; i < AllMovePos.transform.childCount; i++)

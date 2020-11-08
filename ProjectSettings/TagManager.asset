@@ -9,6 +9,7 @@ TagManager:
   - AD
   - Secret
   - NetworkManager
+  - Game
   layers:
   - Default
   - TransparentFX
