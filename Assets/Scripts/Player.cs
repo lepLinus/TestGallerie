@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     public string GameInfo;
     public UpdatePlayerData updatePlayerData;
     public UpdatePlayers updatePlayers;
+    [HideInInspector]
+    public int CountofPicDis;
+    public int CountofSecDis;
 
     public void Start()
     {
@@ -21,7 +24,9 @@ public class Player : MonoBehaviour
     {
         exp = Scoresytem.Exp;
         OnlineState = "true";
-        GameInfo = transform.position.x.ToString("0.00") + ";" + transform.position.y.ToString("0.00") + ";" + transform.position.z.ToString("0.00") + "|";
+        CountofPicDis = Scoresytem.PicturesDis.Count;
+        CountofSecDis = Scoresytem.SecretsDis.Count;
+        GameInfo = transform.position.x.ToString("0.00") + ";" + transform.position.y.ToString("0.00") + ";" + transform.position.z.ToString("0.00") + "|" + CountofPicDis + "|" + CountofSecDis;
     }
 
     public IEnumerator Updatetoserver(bool isfirstrun)

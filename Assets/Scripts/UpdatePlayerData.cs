@@ -39,6 +39,8 @@ public class UpdatePlayerData : MonoBehaviour
             player.exp = Int32.Parse(userInfos[0].Exp);
             Scoresytem.Exp = Int32.Parse(userInfos[0].Exp);
             player.GameInfo = userInfos[0].GameInfo;
+            Scoresytem.SecretsDis = new List<int>(Int32.Parse(userInfos[0].GameInfo.Split('|')[2]));
+            Scoresytem.PicturesDis = new List<int>(Int32.Parse(userInfos[0].GameInfo.Split('|')[1]));
         }
     }
 

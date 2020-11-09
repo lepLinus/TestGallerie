@@ -10,8 +10,9 @@ public class ScoreSystem : MonoBehaviour
     public int PictureScore, SecretScore;
     Animation Scoreanim;
     public TextMeshProUGUI Scoretext, ExpText;
-    List<int> PicturesDis = new List<int>();
-    List<int> SecretsDis = new List<int>();
+    [HideInInspector]
+    public List<int> PicturesDis = new List<int>();
+    public List<int> SecretsDis = new List<int>();
 
     void Start()
     {
