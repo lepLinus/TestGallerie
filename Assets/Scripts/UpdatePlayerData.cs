@@ -46,7 +46,7 @@ public class UpdatePlayerData : MonoBehaviour
 
     public IEnumerator UpdateP(int Exp,string GameInfo,string OnlineState)
     {
-        getrequest.Get("https://www.linuslepschies.de/PhpGallerie/SetScore.php?UserName=" + Name + "&PassWD=" + "1MRf!s13" + "&Exp=" + Exp + "&GameInfo=" + GameInfo + "&OnlineState=" + OnlineState);
+        getrequest.Post("https://www.linuslepschies.de/PhpGallerie/SetScore.php", "UserName=" + Name + "&PassWD=" + "1MRf!s13" + "&Exp=" + Exp + "&GameInfo=" + GameInfo + "&OnlineState=" + OnlineState);
         yield return new WaitForSeconds(1);
         if (getrequest.Message.Length == 0)
         {

@@ -2,11 +2,12 @@
 using UnityEngine.Networking;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class Getrequest : MonoBehaviour
 {
     public string Message;
-
+    
     public void Start()
     {
         Message = null;
@@ -17,7 +18,11 @@ public class Getrequest : MonoBehaviour
         Message = null;
         StartCoroutine(GetRequest(URL));
     }
-
+    public void Post(string URL, string data)
+    {
+        Message = null;
+        StartCoroutine(PostRequest(URL,data));
+    }
     IEnumerator GetRequest(string uri)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
@@ -47,4 +52,32 @@ public class Getrequest : MonoBehaviour
             }
         }
     }
+    IEnumerator PostRequest(string URL, string data)
+    {
+        //field1=foo&field2=bar
+        WWWForm form = new WWWForm();
+        string[] split = data.Split('&');
+
+        for (int i = 0;i < split.Length; i++)
+        {
+            form.AddField(split[i].Split('=')[0], split[i].Split('=')[1]);
+        }
+
+        using (UnityWebRequest www = UnityWebRequest.Post(URL, form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Message = www.downloadHandler.text;
+            }
+            Debug.Log(":\nReceived: " + www.downloadHandler.text);
+        }
+        
+    }
+
 }
