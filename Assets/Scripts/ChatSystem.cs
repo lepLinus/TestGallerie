@@ -19,6 +19,10 @@ public class ChatSystem : MonoBehaviour
         {
             return;
         }
+        if (message == "")
+        {
+            return;
+        }
         StartCoroutine(PostRequest("https://www.linuslepschies.de/PhpGallerie/SendChat.php","UserName=" + player.Name + "&Message=" + message));
         textinput.text = "";
     }
