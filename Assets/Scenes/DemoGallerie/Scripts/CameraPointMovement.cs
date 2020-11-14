@@ -14,7 +14,7 @@ public class CameraPointMovement : MonoBehaviour
     public GameObject AllMovePos,AllPictures,AllADs;
     public GameObject PictureInfo, AdInfo;
     public ScoreSystem ScoreSystem;
-
+    public MenuManager menu;
 
 
     void Update()
@@ -47,6 +47,7 @@ public class CameraPointMovement : MonoBehaviour
                     Cursor.visible = true;
                     Cursor.lockState = CursorLockMode.None;
                     PictureInfo.GetComponent<PictureInfo>().SetNewText(hit.transform.gameObject.name);
+                    menu.CloseAll();
                     PictureInfo.SetActive(true);
                 }
             }
@@ -62,6 +63,7 @@ public class CameraPointMovement : MonoBehaviour
                     Cursor.visible = true;
                     Cursor.lockState = CursorLockMode.None;
                     //PictureInfo.GetComponent<PictureInfo>().SetNewText(hit.transform.gameObject.name);
+                    menu.CloseAll();
                     AdInfo.SetActive(true);
                 }
             }

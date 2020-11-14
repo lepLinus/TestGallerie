@@ -6442,6 +6442,7 @@ MonoBehaviour:
   PictureInfo: {fileID: 417842623}
   AdInfo: {fileID: 61561258}
   ScoreSystem: {fileID: 122907740}
+  menu: {fileID: 2081174048}
 --- !u!114 &197190001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6949,6 +6950,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2081174048}
+        m_MethodName: CloseAll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 119303178}
         m_MethodName: SetActive
         m_Mode: 6
@@ -29188,6 +29200,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2081174048}
+        m_MethodName: CloseAll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2081174046}
         m_MethodName: Open
         m_Mode: 1
@@ -52730,6 +52753,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2081174048}
+        m_MethodName: CloseAll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 13506268}
         m_MethodName: SetActive
         m_Mode: 6
@@ -65612,6 +65646,7 @@ GameObject:
   - component: {fileID: 2081174044}
   - component: {fileID: 2081174043}
   - component: {fileID: 2081174042}
+  - component: {fileID: 2081174048}
   - component: {fileID: 2081174047}
   - component: {fileID: 2081174046}
   m_Layer: 5
@@ -65741,6 +65776,25 @@ MonoBehaviour:
   textinput: {fileID: 2042622399}
   ChatText: {fileID: 792063483}
   player: {fileID: 7233984261248371774}
+--- !u!114 &2081174048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081174041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83472cd5d9cecf241aa136fea780e61e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Menu:
+  - {fileID: 417842623}
+  - {fileID: 61561258}
+  - {fileID: 632236450}
+  - {fileID: 1910668489}
+  - {fileID: 119303178}
+  - {fileID: 13506268}
 --- !u!4 &2085689551 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8994259899389727980, guid: 4657e8f899f8a624dbb20e95dabd56aa,
