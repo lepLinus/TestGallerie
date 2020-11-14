@@ -26,7 +26,12 @@ public class Player : MonoBehaviour
         OnlineState = "true";
         CountofPicDis = Scoresytem.PicturesDis.Count;
         CountofSecDis = Scoresytem.SecretsDis.Count;
-        GameInfo = transform.position.x.ToString("0.00") + ";" + transform.position.y.ToString("0.00") + ";" + transform.position.z.ToString("0.00") + "|" + CountofPicDis + "|" + CountofSecDis;
+
+        string x = transform.position.x.ToString("0.00");
+        string y = transform.position.y.ToString("0.00");
+        string z = transform.position.z.ToString("0.00");
+
+        GameInfo = x.Replace('.',',') + ";" + y.Replace('.', ',') + ";" + z.Replace('.', ',') + "|" + CountofPicDis + "|" + CountofSecDis;
     }
 
     public IEnumerator Updatetoserver(bool isfirstrun)
@@ -34,12 +39,14 @@ public class Player : MonoBehaviour
         if (isfirstrun)
         {
             updatePlayerData.Getscore();
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1.1f);
         }
-        updatePlayerData.UpdatePlayer();
-        yield return new WaitForSeconds(1.5f);
         updatePlayers.LoadAll();
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.1f);
+        updatePlayerData.UpdatePlayer();
+        yield return new WaitForSeconds(1.1f);
+        updatePlayers.LoadAll();
+        yield return new WaitForSeconds(1.1f);
         StartCoroutine(Updatetoserver(false));
     }
 

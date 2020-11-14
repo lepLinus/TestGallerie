@@ -72,7 +72,11 @@ public class UpdatePlayers : MonoBehaviour
                     {
                         if (userInfos[i].OnlineState == "false")
                         {
-                            Destroy(PlayersParent.transform.GetChild(j).gameObject);
+                            StartCoroutine(DeSpawnPlayer(PlayersParent.transform.GetChild(j).gameObject));
+                        }
+                        else
+                        {
+                           // StopCoroutine(DeSpawnPlayer(PlayersParent.transform.GetChild(j).gameObject));
                         }
                         Allpos[i] = userInfos[i].GameInfo.Split('|')[0];
                         Vector3 Pos = new Vector3(float.Parse(Allpos[i].Split(';')[0]), float.Parse(Allpos[i].Split(';')[1]), float.Parse(Allpos[i].Split(';')[2]));
@@ -94,7 +98,11 @@ public class UpdatePlayers : MonoBehaviour
             }
         }
     }
-
+    public IEnumerator DeSpawnPlayer(GameObject playertodes)
+    {
+        yield return new WaitForSeconds(5);
+        Destroy(playertodes);
+    }
     public IEnumerator Timeout(GameObject Playertotimeout)
     {
         yield return new WaitForSeconds(3);

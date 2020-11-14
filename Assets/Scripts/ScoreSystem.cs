@@ -57,7 +57,7 @@ public class ScoreSystem : MonoBehaviour
         SecretsDis.Add(index);
         Scoreanim.Stop("Fadein");
         Scoreanim.Play("Fadein");
-        Scoretext.text = (SecretsDis.Count) + "/6 Secrets Discovered \n Inspiration +" + PictureScore;
+        Scoretext.text = (SecretsDis.Count) + "/6 Secrets Discovered \n Inspiration +" + SecretScore;
         Exp += SecretScore;
         Audio.pitch = 1.2f;
         Audio.Play();
