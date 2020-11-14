@@ -14,6 +14,9 @@ public class CameraPointMovement : MonoBehaviour
     public GameObject AllMovePos,AllPictures,AllADs;
     public GameObject PictureInfo, AdInfo;
     public ScoreSystem ScoreSystem;
+
+
+
     void Update()
     {
         RaycastHit hit;

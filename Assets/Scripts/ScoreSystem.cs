@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System;
 
 public class ScoreSystem : MonoBehaviour
 {
     public int Exp;
     public int PictureScore, SecretScore;
     Animation Scoreanim;
+    public AudioSource Audio;
     public TextMeshProUGUI Scoretext, ExpText;
     [HideInInspector]
     public List<int> PicturesDis = new List<int>();
+    [HideInInspector]
     public List<int> SecretsDis = new List<int>();
+
+    
 
     void Start()
     {
@@ -38,6 +41,8 @@ public class ScoreSystem : MonoBehaviour
         Scoreanim.Play("Fadein");
         Scoretext.text = (PicturesDis.Count) + "/19 Pictures Discovered \n Inspiration +" + PictureScore;
         Exp += PictureScore;
+        Audio.pitch = Random.Range(0.7f,1);
+        Audio.Play();
     }
 
     public void AddSecretScore(int index)
@@ -54,5 +59,7 @@ public class ScoreSystem : MonoBehaviour
         Scoreanim.Play("Fadein");
         Scoretext.text = (SecretsDis.Count) + "/6 Secrets Discovered \n Inspiration +" + PictureScore;
         Exp += SecretScore;
+        Audio.pitch = 1.2f;
+        Audio.Play();
     }
 }

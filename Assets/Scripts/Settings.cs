@@ -14,15 +14,15 @@ public class Settings : MonoBehaviour
     {
         if (index == 1)
         {
-            Screen.SetResolution(1920, 1080, true);
+            Screen.SetResolution(1920, 1080, false);
         }
         else if (index == 2)
         {
-            Screen.SetResolution(3840, 2160, true);
+            Screen.SetResolution(3840, 2160, false);
         }
         else
         {
-            Screen.SetResolution(1280, 720, true);
+            Screen.SetResolution(1280, 720, false);
         }
     }
     public void SetQul(int index)
