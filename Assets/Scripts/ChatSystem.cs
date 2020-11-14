@@ -19,7 +19,7 @@ public class ChatSystem : MonoBehaviour
         {
             return;
         }
-        if (message == "")
+        if (message == "" || message == " ")
         {
             return;
         }
