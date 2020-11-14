@@ -26,7 +26,7 @@ public class ChatSystem : MonoBehaviour
     public IEnumerator GetChat()
     {
         StartCoroutine(GetRequest("https://www.linuslepschies.de/PhpGallerie/GetChat.php?PassWD=1MRf!s13"));
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         if (Message.Length == 0 || Message == "[]")
         {
             Debug.Log("Error on Getting data");
