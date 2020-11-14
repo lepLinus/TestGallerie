@@ -70,6 +70,10 @@ public class UpdatePlayers : MonoBehaviour
                 {
                     if (PlayersParent.transform.GetChild(j).name == userInfos[i].UserName)
                     {
+                        if (userInfos[i].OnlineState == "false")
+                        {
+                            Destroy(PlayersParent.transform.GetChild(j).gameObject);
+                        }
                         Allpos[i] = userInfos[i].GameInfo.Split('|')[0];
                         Vector3 Pos = new Vector3(float.Parse(Allpos[i].Split(';')[0]), float.Parse(Allpos[i].Split(';')[1]), float.Parse(Allpos[i].Split(';')[2]));
                         isspwned = true;
