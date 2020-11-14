@@ -9869,7 +9869,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 639518811}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2081174047}
+        m_MethodName: SendChat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &305275220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52644,7 +52655,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1677850550
 RectTransform:
   m_ObjectHideFlags: 0
@@ -52707,7 +52718,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1677850552}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2081174047}
+        m_MethodName: OpenChat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 13506268}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1677850552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62318,6 +62351,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2081174047}
+        m_MethodName: CloseChat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1954325914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65568,6 +65612,7 @@ GameObject:
   - component: {fileID: 2081174044}
   - component: {fileID: 2081174043}
   - component: {fileID: 2081174042}
+  - component: {fileID: 2081174047}
   - component: {fileID: 2081174046}
   m_Layer: 5
   m_Name: Canvas
@@ -65681,6 +65726,21 @@ MonoBehaviour:
   Menu: {fileID: 1910668489}
   RankNames: {fileID: 1517885095}
   Exp: {fileID: 1867171844}
+--- !u!114 &2081174047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081174041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9831346ded4d57a4eba8eead88af6d77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textinput: {fileID: 2042622399}
+  ChatText: {fileID: 792063483}
+  player: {fileID: 7233984261248371774}
 --- !u!4 &2085689551 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8994259899389727980, guid: 4657e8f899f8a624dbb20e95dabd56aa,
