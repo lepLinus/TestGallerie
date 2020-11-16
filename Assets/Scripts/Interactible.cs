@@ -6,6 +6,8 @@ public class Interactible : MonoBehaviour
 {
     public bool isdoor;
     bool isopen = false;
+    public bool isarcade;
+    public GameObject ArcadeMenu;
     // Start is called before the first frame update
     public void Interact()
     {
@@ -14,6 +16,10 @@ public class Interactible : MonoBehaviour
         {
             isopen = true;
             this.transform.parent.GetComponent<Animation>().Play("Door");
+        }
+        if (isarcade)
+        {
+            ArcadeMenu.SetActive(true);
         }
         
     }
