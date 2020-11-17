@@ -21,15 +21,14 @@ public class ArcadeGame : MonoBehaviour
         {
             
             Player.GetComponent<RectTransform>().position += new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"),0) * 200 * Time.deltaTime;
-            Vector2 mouseScreenPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mouseScreenPosition = Input.mousePosition;
             Debug.Log("MousePos" + Input.mousePosition);
             Debug.Log("Mouse Pos" + mouseScreenPosition);
             // get direction you want to point at
-            //Vector2 direction = (mouseScreenPosition - (Vector2)Player.transform.position).normalized;
-            //Debug.Log("dir" + direction);
+            Vector2 direction = (mouseScreenPosition - (Vector2)Player.GetComponent<RectTransform>().localPosition).normalized;
+            Debug.Log("dir" + direction);
             // set vector of transform directly
-            //Player.transform.up = direction;
-            Player.transform.LookAt(mouseScreenPosition, Vector3.right);
+            Player.GetComponent<RectTransform>().up = direction;
         }
     }
 }
