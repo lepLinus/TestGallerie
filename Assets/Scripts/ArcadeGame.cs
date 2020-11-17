@@ -8,7 +8,9 @@ public class ArcadeGame : MonoBehaviour
     public GameObject Player;
     public GameObject Astroid;
     public GameObject Ammo;
+    public GameObject GamePar;
     bool started = false;
+    List<GameObject> currentAstroids;
 
     public void StartGame()
     {
@@ -20,15 +22,21 @@ public class ArcadeGame : MonoBehaviour
         if(started)
         {
             
-            Player.GetComponent<RectTransform>().position += new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"),0) * 200 * Time.deltaTime;
-            Vector2 mouseScreenPosition = Input.mousePosition;
-            Debug.Log("MousePos" + Input.mousePosition);
-            Debug.Log("Mouse Pos" + mouseScreenPosition);
-            // get direction you want to point at
-            Vector2 direction = (mouseScreenPosition - (Vector2)Player.GetComponent<RectTransform>().localPosition).normalized;
-            Debug.Log("dir" + direction);
-            // set vector of transform directly
-            Player.GetComponent<RectTransform>().up = direction;
+            Player.GetComponent<RectTransform>().position += new Vector3(Input.GetAxis("Horizontal"),0,0) * 400 * Time.deltaTime;
+            Player.GetComponent<RectTransform>().localPosition = new Vector3(Mathf.Clamp(Player.GetComponent<RectTransform>().localPosition.x, -600,600), Player.GetComponent<RectTransform>().localPosition.y, 0);
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                Shoot();
+            }
+
+
         }
+    }
+
+    public void Shoot()
+    {
+        GameObject go = Instantiate(Ammo,Player.GetComponent<RectTransform>().position,Quaternion.identity);
+        go.GetComponent<RectTransform>().SetParent(GamePar.transform.GetComponent<RectTransform>());
+        Destroy(go,3);
     }
 }
