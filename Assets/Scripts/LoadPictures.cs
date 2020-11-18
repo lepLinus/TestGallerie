@@ -50,7 +50,7 @@ public class LoadPictures : MonoBehaviour
         else
         {
             Texture myTexture = ((DownloadHandlerTexture)www.downloadHandler).texture;
-            Picture.GetComponent<MeshRenderer>().material.SetTexture(0,myTexture);
+            Picture.GetComponent<MeshRenderer>().material.SetTexture("_MainTex", myTexture);
         }
     }
 
