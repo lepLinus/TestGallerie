@@ -9642,7 +9642,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Use W,A,S,D to Move and Space to shoot
+  m_text: Use A and D to Move and Space to shoot
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dae47ed0b08d55d4e9e826be7dada341, type: 2}
   m_sharedMaterial: {fileID: -5466891867326491787, guid: dae47ed0b08d55d4e9e826be7dada341,
