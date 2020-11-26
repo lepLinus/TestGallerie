@@ -27,9 +27,12 @@ public class GetWebTexture : MonoBehaviour
             Texture myTexture = ((DownloadHandlerTexture)www.downloadHandler).texture;
             Webtext = (Texture2D)myTexture;
             Debug.Log(myTexture.width);
-            
+            SetTexture();   
         }
     }
-
+    public void SetTexture()
+    {
+        this.GetComponent<MeshRenderer>().materials[0].SetTexture("_BaseMap", Webtext);
+    }
 
 }
