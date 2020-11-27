@@ -38,7 +38,9 @@ public class CameraPointMovement : MonoBehaviour
             if (hit.transform.gameObject.tag == "Picture")
             {
                 Changematerial(hit.transform.gameObject);
-                hit.transform.gameObject.GetComponent<MeshRenderer>().materials[1] = litframe;
+                Material[] mats = new Material[2] { hit.transform.gameObject.GetComponent<MeshRenderer>().material, litframe };
+                
+                hit.transform.gameObject.GetComponent<MeshRenderer>().materials = mats;
 
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -102,7 +104,8 @@ public class CameraPointMovement : MonoBehaviour
             {
                 break;
             }
-            AllPictures.transform.GetChild(i).GetComponent<MeshRenderer>().materials[1] = normalframe;
+            Material[] mats = new Material[2] { AllPictures.transform.GetChild(i).GetComponent<MeshRenderer>().material, normalframe };
+            AllPictures.transform.GetChild(i).GetComponent<MeshRenderer>().materials = mats;
         }
 
         for (int i = 0; i < AllADs.transform.childCount; i++)
