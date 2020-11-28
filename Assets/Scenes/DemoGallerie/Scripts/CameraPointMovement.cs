@@ -48,9 +48,9 @@ public class CameraPointMovement : MonoBehaviour
                     ScoreSystem.AddScorePicture(Int32.Parse(hit.transform.gameObject.name));
                     Cursor.visible = true;
                     Cursor.lockState = CursorLockMode.None;
-                    PictureInfo.GetComponent<PictureInfo>().SetNewText(hit.transform.gameObject.name);
                     menu.CloseAll();
                     PictureInfo.SetActive(true);
+                    PictureInfo.GetComponent<PictureInfo>().SetNewText(hit.transform.gameObject.name);
                 }
             }
             
