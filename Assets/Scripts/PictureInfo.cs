@@ -42,7 +42,7 @@ public class PictureInfo : MonoBehaviour
                 if (i == pictureid-1)
                 {
                     Debug.Log("if");
-                    MainText.text = pictureinfos[i].PictureDes.Split('|')[i];
+                    MainText.text = pictureinfos[i].PictureDes;
                     Header.text = pictureinfos[i].ExhabName + " - " + pictureinfos[i].ArtName;
                     link = pictureinfos[i].SocialMedia;
                     break;
@@ -93,7 +93,7 @@ public class PictureInfo : MonoBehaviour
     {
         public string ExhabName;
         public string PictureDes;
-        public string PictureLink;
+        public string Location;
         public string ArtName;
         public string SocialMedia;
 
