@@ -9,7 +9,7 @@ public class Settings : MonoBehaviour
     public GameObject VolumGlob;
     public Slider Slider;
     public AudioSource Main;
-
+    public GameObject GrassMesh;
     public void SetRes(int index)
     {
         if (index == 1)
@@ -30,10 +30,12 @@ public class Settings : MonoBehaviour
         if (index == 1)
         {
             VolumGlob.SetActive(true);
+            GrassMesh.SetActive(true);
         }
         else
         {
             VolumGlob.SetActive(false);
+            GrassMesh.SetActive(false);
         }
     }
 

@@ -12,7 +12,7 @@ public class DisplayText : MonoBehaviour
     int index;
     bool isrunning = true;
     public GameObject PressKeytext;
-
+    GameObject FadeOut;
 
     // Start is called before the first frame update
     void Start()
@@ -67,5 +67,21 @@ public class DisplayText : MonoBehaviour
         yield return new WaitForSeconds(1);
         PressKeytext.SetActive(true);
         isrunning = false;
+    }
+
+    public void Fade(GameObject go)
+    {
+        this.GetComponent<Animation>().Play("fadepanel");
+        StartCoroutine(FadeIn(go));
+    }
+    public void Fadeout(GameObject go)
+    {
+        FadeOut = go;
+    }
+    public IEnumerator FadeIn(GameObject go)
+    {
+        yield return new WaitForSeconds(1);
+        go.SetActive(true);
+        FadeOut.SetActive(false);
     }
 }

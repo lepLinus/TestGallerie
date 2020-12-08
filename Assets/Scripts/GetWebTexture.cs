@@ -14,7 +14,7 @@ public class GetWebTexture : MonoBehaviour
 
     IEnumerator GetTexture()
     {
-        UnityWebRequest www = UnityWebRequestTexture.GetTexture("https://www.linuslepschies.de/GalleriePictures/Uploads/1.png");
+        UnityWebRequest www = UnityWebRequestTexture.GetTexture("https://www.linuslepschies.de/GalleriePictures/Uploads/" + this.gameObject.name + ".png");
         yield return www.SendWebRequest();
 
         if (www.isNetworkError || www.isHttpError)
