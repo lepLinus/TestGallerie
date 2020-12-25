@@ -80,7 +80,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   temperature:
     m_OverrideState: 1
-    m_Value: 14.7
+    m_Value: -0
     min: -100
     max: 100
   tint:
@@ -157,7 +157,7 @@ MonoBehaviour:
     m_Value: 0.05
   contrast:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 7
     min: -100
     max: 100
   colorFilter:
@@ -173,7 +173,7 @@ MonoBehaviour:
     max: 180
   saturation:
     m_OverrideState: 1
-    m_Value: 18.8
+    m_Value: 10
     min: -100
     max: 100
 --- !u!114 &8379421282832112983
